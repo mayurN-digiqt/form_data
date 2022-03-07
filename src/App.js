@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+// import axios from 'axios';
+import Home from './component/Home';
+import About from './component/About';
+import Navbar from './layout/Navbar';
+import AddData from './user/AddData';
+import EditData from "./user/EditData";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div className='App'>
+        
+        {/* <Route  path='/home'><Home /></Route>
+        <Route  path='/about'><About /></Route> */}
+       <Navbar />
+       <Routes>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/adddata" element={<AddData />} />
+          <Route  exact path="/editdata/:id" element={<EditData />} />
+        
+      </Routes>
+       
+       
     </div>
-  );
+
+    
+      );
 }
 
 export default App;
