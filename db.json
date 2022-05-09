@@ -1,62 +1,6 @@
 {
-  "formdata": [
-    {
-      "firstName": "Mayura",
-      "lastName": "Nimavat",
-      "mobile": "9924968027",
-      "email": "mayur@gmail.com",
-      "id": 1
-    },
-    {
-      "firstName": "Mayur",
-      "lastName": "Nimavata",
-      "mobile": "9924968024",
-      "email": "mayur@gmail.com",
-      "id": 2
-    },
-    {
-      "firstName": "Mayur",
-      "lastName": "Nimavat",
-      "mobile": "6645556456",
-      "email": "sff@gmail.com",
-      "id": 3
-    },
-    {
-      "firstName": "Mayur",
-      "lastName": "Nimavat",
-      "mobile": "9924968024",
-      "email": "mayur@gmail.com",
-      "id": 4
-    },
-    {
-      "firstName": "Mayur",
-      "lastName": "Nimavat",
-      "mobile": "8690768024",
-      "email": "m@gmail.com",
-      "id": 5
-    },
-    {
-      "firstName": "Mayur",
-      "lastName": "Nimavat",
-      "mobile": "8690768024",
-      "email": "sff@gmail.com",
-      "id": 6
-    },
-    {
-      "firstName": "Mayur",
-      "lastName": "Nimavata",
-      "mobile": "8690768024",
-      "email": "m@gmail.com",
-      "id": 7
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "formdata": [],
+  "todotask": [],
   "profile": {
     "name": "typicode"
   }

@@ -1,6 +1,15 @@
 import axios from "axios";
 import React ,{useState,useEffect} from "react";
 import {useNavigate, useParams} from "react-router-dom";
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+const theme = createTheme();
 
 
 const EditData = () => {
@@ -17,6 +26,7 @@ const EditData = () => {
         const {name, value} = e.target;
           setdata({...data, [name] : value});
           // console.log(data);
+          setformerror(validation(data));
         }
         const onSubmitData = async (e) => {
             e.preventDefault();
@@ -24,9 +34,7 @@ const EditData = () => {
             if(Object.keys(formerror).length === 0 && issubmit){
               await axios.put(`http://localhost:3002/formdata/${id}`,data);  
               history("/");
-            }else{
-              setformerror(validation(data));
-                }
+            }
             } 
           
           useEffect(() =>{
@@ -72,24 +80,95 @@ const EditData = () => {
          setdata(result.data);
        }   
     return (
-        <>
-        <h1>Edit Details</h1>
-        <form onSubmit={onSubmitData}>
-        <label>Enter First Name:</label>
-        <input type="text" maxLength={10} name="firstName" value={data.firstName} onChange={onChangeData}/><br/><br/>
-        <p>{formerror.firstName}</p>
-        <label>Enter Last Name:</label>
-        <input type="text" maxLength={10} name="lastName" value={data.lastName} onChange={onChangeData}/><br/><br/>
-        <p>{formerror.lastName}</p>
-        <label>Enter Mobile No.</label>
-        <input type="text"  maxLength={10} name="mobile" value={data.mobile} onChange={onChangeData}/><br/><br/>
-        <p>{formerror.mobile}</p>
-        <label>Enter Email Id.</label>
-        <input type="text" name="email" value={data.email} onChange={onChangeData}/><br/><br/>
-        <p>{formerror.email}</p>
-        <button >Update Data</button>
-      </form>
-        </>
+      <>
+      <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+  
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Edit Details
+        </Typography>
+        <Box component="form" noValidate  sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="given-name"
+                name="firstName"
+                
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                maxLength={10} 
+                value={data.firstName} onChange={onChangeData}
+              />
+              <Typography component="h4"  color="red" >
+                     {formerror.firstName}
+                    </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="family-name"
+                maxLength={10}  
+                value={data.lastName} onChange={onChangeData}
+              />
+              <Typography component="h4"  color="red" >
+                     {formerror.lastName}
+                    </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Mobile"
+                type="text"
+                id="mobile"
+                name="mobile"
+                maxLength={10}  
+                value={data.mobile} onChange={onChangeData}
+              />
+              <Typography component="h4"  color="red" >
+                     {formerror.mobile}
+                    </Typography>
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email" value={data.email} onChange={onChangeData}
+              />
+              <Typography component="h4"  color="red" >
+                     {formerror.email}
+                    </Typography>
+            </Grid>
+           
+          </Grid>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={onSubmitData}
+          >
+            Update Data
+          </Button>
+        
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
+  </>
         
     )
 }
